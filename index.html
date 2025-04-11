@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Scholarship Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+  <h1>Scholarship Finder</h1>
+  </center>
+  <div id="scholarshipList"></div>
+  <script src="data.js"></script>
+  <script>
+    const listDiv = document.getElementById('scholarshipList');
+    scholarships.forEach(s => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h2>${s.name}</h2>
+        <p><strong>Country:</strong> ${s.country}</p>
+        <p><strong>Field:</strong> ${s.field}</p>
+        <p><strong>Deadline:</strong> ${s.deadline}</p>
+        <a href="details.html?id=${s.id}">View Details</a>
+      `;
+      listDiv.appendChild(card);
+    });
+  </script>
+</body>
+</html>

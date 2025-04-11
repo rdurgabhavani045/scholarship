@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scholarship Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="details"></div>
+  <a href="index.html">Back to Home</a>
+  <script src="data.js"></script>
+  <script>
+    const id = new URLSearchParams(window.location.search).get('id');
+    const scholarship = scholarships.find(s => s.id == id);
+    const detailsDiv = document.getElementById('details');
+    if (scholarship) {
+      detailsDiv.innerHTML = `
+        <h1>${scholarship.name}</h1>
+        <p><strong>Country:</strong> ${scholarship.country}</p>
+        <p><strong>Field:</strong> ${scholarship.field}</p>
+        <p><strong>Deadline:</strong> ${scholarship.deadline}</p>
+        <p>${scholarship.description}</p>
+        <button onclick="window.location.href='apply.html?id=${scholarship.id}'">Apply Now</button>
+      `;
+    } else {
+      detailsDiv.innerHTML = "<p>Scholarship not found.</p>";
+    }
+  </script>
+</body>
+</html>
